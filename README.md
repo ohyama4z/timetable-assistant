@@ -1,1 +1,1 @@
-# timetable-assistant 
+時間割をgoogleアシスタントさんに教えてもらう
