@@ -9,17 +9,19 @@ moment.locale('ja')
 const app = dialogflow()
 
 app.intent('Default Welcome Intent', conv => {
-    const tomorrow = moment().add(1,'day')
-    const dayOfTomorrow = tomorrow.format('dddd')
+    const now = moment()
+    const isTomorow = Number(now.format('HH')) > 16
+    const date = isTomorow ? moment().add(1,'day') : now
+    const dayOfWeek = date.format('dddd')
 
-    if(dayOfTomorrow === '土曜日' || dayOfTomorrow === '日曜日') {
-        conv.close(`明日、${dayOfTomorrow}の授業はありません`)
+    if(dayOfWeek === '土曜日' || dayOfWeek === '日曜日') {
+        conv.close(`${isTomorrow ? '明日' : '今日'}、${dayOfWeek}の授業はありません`)
         return
     }
 
     const timetable = getTimetable()
     let messageMetaSet = new Set()
-    Object.values(timetable[dayOfTomorrow]).forEach(subj => {
+    Object.values(timetable[dayOfWeek]).forEach(subj => {
         if (subj !== 'なし') {
             messageMetaSet.add(subj)
         }
@@ -30,7 +32,7 @@ app.intent('Default Welcome Intent', conv => {
         return pre
     }, '')
 
-    conv.close(`明日、${dayOfTomorrow}の授業は${message}です`)
+    conv.close(`${isTomorrow ? '明日' : '今日'}、${dayOfWeek}の授業は${message}です`)
 })
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app)
