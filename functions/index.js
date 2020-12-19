@@ -4,14 +4,14 @@ const functions = require('firebase-functions')
 const { dialogflow } = require('actions-on-google')
 // const fs = require('fs')
 // const csv = require('csv')
-const moment = require('moment')
+const moment = require('moment-timezone')
 moment.locale('ja')
 const app = dialogflow()
 
 app.intent('Default Welcome Intent', conv => {
-    const now = moment()
-    const isTomorow = Number(now.format('HH')) > 16
-    const date = isTomorow ? now.add(1,'day') : now
+    const now = moment().tz('Asia/Tokyo')
+    const isTomorrow = Number(now.format('HH')) > 16
+    const date = isTomorrow ? now.add(1,'day') : now
     const dayOfWeek = date.format('dddd')
 
     if(dayOfWeek === '土曜日' || dayOfWeek === '日曜日') {
