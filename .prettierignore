@@ -3,3 +3,4 @@ timetable-assistant_old/
 package.json
 package-lock.json
 *.md
+*.yml

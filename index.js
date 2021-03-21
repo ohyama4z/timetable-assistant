@@ -1,3 +1,5 @@
 'use strict'
-const text = 'Hello world'
-console.log(text)
+const func = text => {
+  console.log(text)
+}
+func('Hello')

@@ -1,2 +1,5 @@
-const text = 'Hello world'
-console.log(text)
+const func = (text: string): void => {
+  console.log(text)
+}
+
+func('Hello')

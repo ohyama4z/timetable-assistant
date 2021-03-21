@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc -w",
-    "lint": "prettier --write . && eslint --fix ."
+    "lint": "eslint --ext .ts,.js . --fix"
   },
   "repository": {
     "type": "git",
@@ -37,5 +37,8 @@
     "webpack": "^5.25.0",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.865.0"
   }
 }
