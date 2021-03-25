@@ -23,7 +23,8 @@
   "extensions": [
     "visualstudioexptteam.vscodeintellicode",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "amazonwebservices.aws-toolkit-vscode"
   ]
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
