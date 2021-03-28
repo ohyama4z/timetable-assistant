@@ -1,10 +1,5 @@
 # timetable-assistant
 
-google アシスタントに時間割を教えてもらう  
-「(今日・明日・〇曜日)の時間割を教えて」でいい感じに返せるようにしたい
-
-# src
-
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
 - hello-world - Code for the application's Lambda function and Project Dockerfile.
@@ -49,7 +44,7 @@ You can find your API Gateway Endpoint URL in the output values displayed after 
 Build your application with the `sam build` command.
 
 ```bash
-src$ sam build
+timetable-assistant$ sam build
 ```
 
 The SAM CLI builds a docker image from a Dockerfile and then installs dependencies defined in `hello-world/package.json` inside the docker image. The processed template file is saved in the `.aws-sam/build` folder.
@@ -59,14 +54,14 @@ Test a single function by invoking it directly with a test event. An event is a 
 Run functions locally and invoke them with the `sam local invoke` command.
 
 ```bash
-src$ sam local invoke HelloWorldFunction --event events/event.json
+timetable-assistant$ sam local invoke HelloWorldFunction --event events/event.json
 ```
 
 The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
 
 ```bash
-src$ sam local start-api
-src$ curl http://localhost:3000/
+timetable-assistant$ sam local start-api
+timetable-assistant$ curl http://localhost:3000/
 ```
 
 The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
@@ -90,7 +85,7 @@ To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs`
 `NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
 
 ```bash
-src$ sam logs -n HelloWorldFunction --stack-name src --tail
+timetable-assistant$ sam logs -n HelloWorldFunction --stack-name timetable-assistant --tail
 ```
 
 You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
@@ -100,7 +95,7 @@ You can find more information and examples about filtering Lambda function logs 
 Tests are defined in the `hello-world/tests` folder in this project. Use NPM to install the [Mocha test framework](https://mochajs.org/) and run unit tests from your local machine.
 
 ```bash
-src$ cd hello-world
+timetable-assistant$ cd hello-world
 hello-world$ npm install
 hello-world$ npm run test
 ```
@@ -110,7 +105,7 @@ hello-world$ npm run test
 To delete the sample application that you created, use the AWS CLI. Assuming you used your project name for the stack name, you can run the following:
 
 ```bash
-aws cloudformation delete-stack --stack-name src
+aws cloudformation delete-stack --stack-name timetable-assistant
 ```
 
 ## Resources
