@@ -1,8 +1,8 @@
 FROM node:lts-slim
 
-WORKDIR /app
-COPY package.json ./
-COPY package-lock.json ./
+COPY --from=docker /usr/local/bin/docker /usr/local/bin/docker
+
+WORKDIR /tmp
 
 RUN set -x \
   && apt-get update \
@@ -18,7 +18,9 @@ RUN set -x \
   && cd ~ \
   && wget "https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip" \
   && unzip aws-sam-cli-linux-x86_64.zip -d sam-installation \
-  && ./sam-installation/install \
-  && npm ci
+  && ./sam-installation/install
 
-COPY --from=docker /usr/local/bin/docker /usr/local/bin/docker
+WORKDIR /app
+COPY package.json package-lock.json ./
+
+RUN npm ci
