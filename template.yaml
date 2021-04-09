@@ -34,7 +34,7 @@ Resources:
         TimetableAssistant:
           Type: Api
           Properties:
-            Path: /timetable-assistant
+            Path: /timetable
             Method: get
 
 Outputs:

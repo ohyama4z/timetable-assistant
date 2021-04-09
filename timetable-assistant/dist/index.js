@@ -1,0 +1,1 @@
+(()=>{"use strict";if(typeof __nccwpck_require__!=="undefined")__nccwpck_require__.ab=__dirname+"/";var e={};const func=e=>{console.log(e)};func("Hello");module.exports=e})();
