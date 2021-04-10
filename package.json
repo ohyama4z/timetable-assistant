@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc -w",
     "lint": "eslint --ext .ts,.js . --fix",
-    "build": "ncc build timetable-assistant/src/main.ts -mo timetable-assistant/dist"
+    "build": "ncc build src/app.ts -m && mv dist/index.js dist/app.js"
   },
   "repository": {
     "type": "git",
@@ -41,6 +41,14 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "aws-sdk": "^2.865.0"
+    "@types/aws-lambda": "^8.10.75",
+    "@types/aws-serverless-express": "^3.3.3",
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@vendia/serverless-express": "^4.3.4",
+    "aws-sdk": "^2.865.0",
+    "aws-serverless-express": "^3.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   }
 }
