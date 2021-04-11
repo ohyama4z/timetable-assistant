@@ -1,7 +1,9 @@
 import express, { Request, Response } from 'express'
-import { APIGatewayEvent, Context, Handler } from 'aws-lambda'
+import { APIGatewayEvent, Context, Handler, Callback } from 'aws-lambda'
 import awsServerlessExpress from 'aws-serverless-express'
 import cors from 'cors'
+import { DialogflowApp } from 'actions-on-google'
+import actionsOnLambda from 'actions-on-lambda'
 
 const app = express()
 app.use(cors())
