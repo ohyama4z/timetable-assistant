@@ -4,6 +4,7 @@ interface Timetable {
   }
 }
 
+// 2021前期
 const timetable: Timetable = {
   月曜日: {
     '1限目': '応用物理',

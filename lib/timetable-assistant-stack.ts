@@ -13,7 +13,7 @@ export class TimetableAssistantStack extends cdk.Stack {
       {
         code: lambda.Code.fromAsset('lambda'),
         handler: 'lambdaHandler.timetableAssistantHandler',
-        runtime: lambda.Runtime.NODEJS_12_X
+        runtime: lambda.Runtime.NODEJS_14_X
       }
     )
 
@@ -30,6 +30,8 @@ export class TimetableAssistantStack extends cdk.Stack {
       timetableAssistantLambda,
       {
         proxy: false,
+        requestParameters: {},
+        requestTemplates: {},
         passthroughBehavior: apiGateway.PassthroughBehavior.WHEN_NO_MATCH,
         integrationResponses: [
           {
@@ -45,6 +47,7 @@ export class TimetableAssistantStack extends cdk.Stack {
     timetableAssistantApi.root
       .addResource('timetable')
       .addMethod('GET', timetableAssistantApiIntegration, {
+        requestParameters: {},
         methodResponses: [{ statusCode: '200' }]
       })
   }
