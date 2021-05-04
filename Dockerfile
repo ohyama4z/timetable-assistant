@@ -1,6 +1,6 @@
 FROM node:lts-slim
 
-# COPY --from=docker /usr/local/bin/docker /usr/local/bin/docker
+COPY --from=docker /usr/local/bin/docker /usr/local/bin/docker
 
 WORKDIR /tmp
 

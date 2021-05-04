@@ -4,5 +4,5 @@ services:
     build: .
     volumes:
       - ./:/app
-      # - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
       - ~/.aws:/root/.aws
