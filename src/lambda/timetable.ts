@@ -1,11 +1,13 @@
-interface Timetable {
-  [key: string]: {
-    [key: string]: string
+export type WeekDay = '月曜日' | '火曜日' | '水曜日' | '木曜日' | '金曜日'
+
+type Timetable = {
+  [day in WeekDay]: {
+    [times: string]: string
   }
 }
 
 // 2021前期
-const timetable: Timetable = {
+export const timetable: Timetable = {
   月曜日: {
     '1限目': '応用物理',
     '2限目': '応用物理',
@@ -47,5 +49,3 @@ const timetable: Timetable = {
     '6限目': 'なし'
   }
 }
-
-export default timetable
