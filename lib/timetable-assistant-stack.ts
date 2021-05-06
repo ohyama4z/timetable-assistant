@@ -13,7 +13,7 @@ export class TimetableAssistantStack extends cdk.Stack {
       'timetableAssistantLambda',
       {
         entry: 'src/lambda/lambdaHandler.ts',
-        handler: 'tametableAssistantHandler',
+        handler: 'timetableAssistantHandler',
         runtime: lambda.Runtime.NODEJS_14_X
       }
     )
