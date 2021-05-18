@@ -11,16 +11,37 @@ export const timetableAssistantHandler = async (
   const day = (ja.hours() >= 16
     ? ja.add(1, 'days').format('dddd')
     : ja.format('dddd')) as WeekDay | '土曜日' | '日曜日'
-  if (day === '日曜日' || day === '土曜日') {
-    return {
-      statusCode: 200,
-      body: JSON.stringify(timetable['月曜日'])
-    }
-  }
+
+  const selectedDay = day === '日曜日' || day === '土曜日' ? '月曜日' : day
 
   console.log(`request: ${event}`)
+
+  const subjects = Object.values(timetable[selectedDay]).reduce(
+    (pre: string[], subject: string) => {
+      if (pre.length > 0 && pre[pre.length - 1] === subject) {
+        return pre
+      }
+      pre = [...pre, subject]
+      return pre
+    },
+    []
+  )
+
+  const subjectsStr =
+    subjects[subjects.length - 1] === 'なし'
+      ? subjects.slice(0, subjects.length - 1).reduce((p, c) => {
+          p = `${p}、${c}`
+          return p
+        }, '')
+      : subjects.reduce((p, c) => {
+          p = `${p}、${c}`
+          return p
+        }, '')
+
+  const message = `${selectedDay}の授業は${subjectsStr}です`
+
   return {
     statusCode: 200,
-    body: JSON.stringify(timetable[day])
+    body: JSON.stringify({ fulfillmentText: message })
   }
 }
