@@ -40,8 +40,29 @@ export const timetableAssistantHandler = async (
 
   const message = `${selectedDay}の授業は${subjectsStr}です`
 
+  const body = {
+    session: {
+      id: 'timetableAssitant',
+      params: {}
+    },
+    prompt: {
+      override: false,
+      firstSimple: {
+        speech: message,
+        text: message
+      }
+    },
+    scene: {
+      name: 'Start',
+      slots: {},
+      next: {
+        name: 'actions.scene.END_CONVERSATION'
+      }
+    }
+  }
+
   return {
     statusCode: 200,
-    body: JSON.stringify({ fulfillmentText: message })
+    body: JSON.stringify(body)
   }
 }
